@@ -1,5 +1,7 @@
 mysql日期相关操作：
   1）计算年龄：SELECT  TIMESTAMPDIFF(YEAR, "1989-11-14", CURDATE()) 
     使用说明：1989-11-14换成自己的出生日即可
+      示例：SELECT  TIMESTAMPDIFF(YEAR, "1962-12-12","1963-12-11")  的值为0，
+          而SELECT  TIMESTAMPDIFF(YEAR, "1962-12-12","1963-12-12") 的值为1
   2）计算今年生日距离日期：SELECT datediff(CONCAT(DATE_FORMAT(CURRENT_DATE(),"%Y"),DATE_FORMAT("1989-11-14","-%m-%d")),CURDATE())
     使用说明：1989-11-14换成自己的出生年月即可
