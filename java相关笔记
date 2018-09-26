@@ -1,1 +1,25 @@
 
+当你给一个JAR文件签名的时候，每一个存档中的每一个文件都在文档清单中都有一个摘要信息，如下所示：
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+https://docs.oracle.com/javase/8/docs/technotes/guides/jar/jar.html#JAR_Manifest  jadr文件规范
