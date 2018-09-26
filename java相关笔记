@@ -1,25 +1,28 @@
-
 当你给一个JAR文件签名的时候，每一个存档中的每一个文件都在文档清单中都有一个摘要信息，如下所示：
+Name: test/classes/ClassOne.class
+SHA1-Digest: TD1GZt8G11dXY2p4olSZPc5Rj64=
+  其摘要的值是文件签名的时候代表该文件的hash值或者编码值，文件的摘要值会在文件自身改变时才会被改变。
+  当JAR已经签名之后，其会在JAR文件的META-INF文件夹下自动生成一个签名文件（和清单文件在同一个文件夹下），签名文件是后缀为.SF的文件，其签名文件的内容如下所示：
+Signature-Version: 1.0
+SHA1-Digest-Manifest: h1yS+K9T7DyHtZrtI+LxvgqaMYM=
+Created-By: 1.7.0_06 (Oracle Corporation)
 
+Name: test/classes/ClassOne.class
+SHA1-Digest: fcav7ShIG6i86xPepmitOVo4vWY=
 
+Name: test/classes/ClassTwo.class
+SHA1-Digest: xrQem9snnPhLySDiZyclMlsFdtM=
 
+Name: test/images/ImageOne.gif
+SHA1-Digest: kdHbE7kL9ZHLgK7akHttYV4XIa0=
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-https://docs.oracle.com/javase/8/docs/technotes/guides/jar/jar.html#JAR_Manifest  jadr文件规范
+Name: test/images/ImageTwo.gif
+SHA1-Digest: mF0D5zpk68R4oaxEqoS9Q7nhm60=
+  正如你所看到的，签名文件的摘要信息和清单文件中的摘要信息相似，但是清单文件中的摘要值是从该文件自身进行计算的，而签名文件中的摘要值
+  
+  
+  
+  
+  
+  
+  https://docs.oracle.com/javase/8/docs/technotes/guides/jar/jar.html#JAR_Manifest  jadr文件规范
