@@ -1,0 +1,132 @@
+git基础知识：git和其他版本控制系统如SVN的一个不同之处就是有暂存区的概念。
+  1)工作区（Working Directory）,就是你放置.git文件的目录
+  2）版本库（Repository），工作区中的.git文件就是Git的版本库。
+    Git的版本库里存了很多东西，其中最重要的就是称为stage（或者叫index）的暂存区，还有Git为我们自动创建的第一个分支master，以及指向master的一个指针叫HEAD。
+	暂缓区：
+	  我们将文件往Git版本库里添加的时候，是分两步执行的：
+  第一步是用git add把文件添加进去，实际上就是把文件修改添加到暂存区；
+  第二步是用git commit提交更改，实际上就是把暂存区的所有内容提交到当前分支。
+  因为我们创建Git版本库时，Git自动为我们创建了唯一一个master分支，所以，现在，git commit就是往master分支上提交更改。你可以简单理解为，需要提交的文件修改通通放到暂存区，然后，一次性提交暂存区的所有修改。
+
+
+
+
+1.初始化git仓库
+ 命令：git init 
+  将会当前文件夹下创建.git文件，此时Git就把仓库建好了，而且告诉你是一个空的仓库（empty Git repository）
+  
+2.添加文件并保存如，readme.txt文件
+  在该文件夹下创建readme.txt文件。
+  使用命令： git add readme.txt 将该文件添加到版本库中管理
+
+3.提交
+  git commit -m "commit message"
+
+4.修改readme.txt 
+   我们修改readme.txt文件，此时使用：git status命令查看当前仓库的状态，提示如：
+# On branch master
+# Changed but not updated:
+#   (use "git add <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#	modified:   readme.txt
+#
+no changes added to commit (use "git add" and/or "git commit -a")
+
+5.将更新添加到仓库中（没有提交，提交之前可以使用该命令） 
+  命令：git add -A
+  git add命令实际上就是把要提交的所有修改放到暂存区（Stage），然后，执行git commit就可以一次性把暂存区的所有修改提交到分支。
+  一旦提交后，如果你又没有对工作区做任何修改，那么工作区就是“干净”的。
+
+6.提交
+  将更新文件添加到仓库中之后，可以使用：git commit -m "message" 命令来进行提交  
+
+7.查看状态  
+   提交之后，再查看状态：git status,其显示结果是
+   # On branch master
+   nothing to commit (working directory clean)
+   
+8.查看仓库的提交日志：git log
+commit 29fcc9374f2d5798152e24cc10a1b237d7e8f44c
+Author: root <root@root.(none)>
+Date:   Thu Nov 1 20:48:18 2018 -0400
+
+    dddd
+
+commit a47e7bf2536d26c6bc97db1e1a2faa697ac07c4a
+Author: root <root@root.(none)>
+Date:   Thu Nov 1 20:40:31 2018 -0400
+
+    d
+
+commit be4db599b0bed9631510fc68a5593b011463511b
+Author: root <root@root.(none)>
+Date:   Thu Nov 1 20:36:10 2018 -0400
+
+
+9.回退到指定版本
+  可以使用命令：git reset --hard a47e7bf2536d26c6bc97db1e1a2faa697ac07c4a
+  其中：a47e7bf2536d26c6bc97db1e1a2faa697ac07c4a为git log中的commit字段数据
+  
+10.如果还想回到之前的版本，即回退之后还想还原到之前的版本
+  使用命令:git reflog
+  如下所示：
+  a47e7bf HEAD@{0}: a47e7bf2536d26c6bc97db1e1a2faa697ac07c4a: updating HEAD
+  29fcc93 HEAD@{1}: commit: dddd
+  a47e7bf HEAD@{2}: commit: d
+  be4db59 HEAD@{3}: commit (initial): first Commit
+  他可以清晰的记录操作记录。
+  并返回到任何之前的版本中。
+
+11.清空本次修改（工作区）
+  比如说我们的readme.txt文件已经修改了，但还没有通过git add命令放入暂缓区，此时我们还是可以通过清理工作的区的方式来还原到修改前的状态。
+  使用示例：修改readme.txt文件，查看状态：git staus 
+# On branch master
+# Changes to be committed:
+#   (use "git reset HEAD <file>..." to unstage)
+#
+#	modified:   readme.txt
+#
+# Changed but not updated:
+#   (use "git add <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#	modified:   readme.txt
+#
+
+  可以看到git提示可以通过git checkout -- <file>...命令来放弃对工作区的修改。
+  如命令：git checkout -- readme.txt
+  把readme.txt文件在工作区的修改全部撤销，这里有两种情况：
+
+一种是readme.txt自修改后还没有被放到暂存区，现在，撤销修改就回到和版本库一模一样的状态；
+
+一种是readme.txt已经添加到暂存区后，又作了修改，现在，撤销修改就回到添加到暂存区后的状态。
+
+总之，就是让这个文件回到最近一次git commit或git add时的状态。
+
+
+
+12.添加远程库： git remote add origin 104.223.48.196:michaelliao/learngit.git  
+
+
+  
+
+  
+git clone ssh://git@104.223.48.196:23256/usr/local/git/repository/lxzzb/lxzzb_html
+
+git clone ssh://git@104.223.48.196:23256/usr/local/git/repository/lxzzb/lxzzb-web
+
+
+获取：
+
+git remote add origin ssh://git@104.223.48.196:23256/usr/local/git/repository/lxzzb/lxzzb-web
+
+ 
+
+
+  
+  
+  
+强制提交到master分支（具体哪个分支请酌情修改）
+
+git push -f -u origin master  
