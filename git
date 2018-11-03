@@ -108,6 +108,9 @@ Date:   Thu Nov 1 20:36:10 2018 -0400
 
 12.添加远程库： git remote add origin 104.223.48.196:michaelliao/learngit.git  
 
+13. git push origin master
+    git pull origin master
+
 
   
 
