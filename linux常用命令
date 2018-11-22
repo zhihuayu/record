@@ -1,1 +1,14 @@
+lscpu 查看cpu信息
+free 查看内存相关信息
+df 查看文件系统命令
+[root@root conf]# df -lhT
+Filesystem     Type      Size  Used Avail Use% Mounted on
+/dev/simfs     simfs      40G  5.5G   35G  14% /
+none           devtmpfs  1.5G  4.0K  1.5G   1% /dev
+none           tmpfs     1.5G     0  1.5G   0% /dev/shm
 
+file fileName 查看文件类型命令
+[root@izbp16ybi1lggoaihesr2hz htmllxzzb]# file index.html 
+index.html: HTML document, UTF-8 Unicode text
+
+parted 查看分区命令
