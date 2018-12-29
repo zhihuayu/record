@@ -119,6 +119,9 @@ git clone ssh://git@104.223.48.196:23256/usr/local/git/repository/lxzzb/lxzzb_ht
 
 git clone ssh://git@104.223.48.196:23256/usr/local/git/repository/lxzzb/lxzzb-web
 
+首次提交需要设置：git config receive.denyCurrentBranch ignore
+否则报：! [remote rejected] master -> master (branch is currently checked out)
+同时需要赋予 .git文件的读写权限
 
 获取：
 
